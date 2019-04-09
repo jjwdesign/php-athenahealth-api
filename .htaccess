@@ -1,0 +1,12 @@
+Options -Indexes
+Options +FollowSymLinks
+RewriteEngine On
+
+# Allow access to these resources without rewrites
+RewriteCond $1 !^(index\.php|themes|images|js|css|static|docs|cc_analytics|favicon\.ico|info\.php)
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*)$ index.php/$1 [QSA,L]
+
+php_value max_input_vars 1000000
